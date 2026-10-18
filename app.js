@@ -23,7 +23,7 @@ function dailySeries(state,now){const r=periodRange(state.budget.period,now);con
 const CATS=[['food','🍔','Food & drinks'],['transport','🚕','Transport'],['shopping','🛍️','Shopping'],['bills','🧾','Bills'],['health','💊','Health'],['fun','🎬','Fun'],['other','📦','Other']];
 const cinfo=k=>CATS.find(c=>c[0]===k)||CATS[6];
 const $=s=>document.querySelector(s);
-const KEY='spendsense:v1';
+const KEY='wiselys:v1';
 let state=load(),editId=null,delId=null,lastCat='food',saveOK=true;
 function load(){try{const s=JSON.parse(localStorage.getItem(KEY));if(s&&s.budget&&Array.isArray(s.expenses))return s}catch(e){}
   return{budget:{amount:null,period:'monthly',currency:'TRY'},expenses:[]}}
