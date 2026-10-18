@@ -1,7 +1,3 @@
-const KEY = 'wiselys:v1';
-let state = JSON.parse(localStorage.getItem(KEY)) ||
- { budget: { amount: null, period: 'monthly', currency: 'TRY' }, expenses: [] };
-const save = () => localStorage.setItem(KEY, JSON.stringify(state));
 // <core>
 const PERIODS={daily:'Daily',weekly:'Weekly',monthly:'Monthly'};
 function periodRange(p,now){const d=new Date(now);d.setHours(0,0,0,0);let s,e;
