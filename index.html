@@ -6,10 +6,53 @@
     <title>Wiselys</title>
     <link rel="stylesheet" herf="style.css">
 </head>
+</head>
 <body>
-    <h1>WiselyS</h1>
-    <section id="dash"></section>
-    <button id="add">+ Add expense</button>
-    <script src="app.js"></script>
+<div class="wrap">
+  <header><h1>SpendSense</h1><button class="btn icon" id="bBudget" aria-label="Budget settings">⚙️ Budget</button></header>
+  <div id="note"></div>
+  <section id="dash" aria-live="polite"></section>
+  <section class="card" aria-labelledby="hIns"><h2 id="hIns">Spending insights</h2><div id="ins"></div></section>
+  <section class="card" aria-labelledby="hHist"><h2 id="hHist">History</h2>
+    <div class="filters">
+      <select id="fScope" aria-label="Period"><option value="period">This period</option><option value="all">All time</option></select>
+      <select id="fCat" aria-label="Category"></select>
+      <input type="date" id="fDate" aria-label="Filter by date">
+    </div>
+    <ul id="list"></ul>
+  </section>
+</div>
+<button class="btn primary fab" id="fab">＋ Add expense</button>
+
+<dialog id="dExp"><form id="fExp" novalidate>
+  <h2 id="tExp">Add expense</h2>
+  <label class="f" for="iAmt">Amount</label>
+  <input id="iAmt" inputmode="decimal" autocomplete="off" placeholder="0.00">
+  <div class="f" style="font-weight:600;font-size:.9rem;margin-bottom:6px">Category</div>
+  <div class="cats" id="cats" role="radiogroup" aria-label="Category"></div>
+  <label class="f" for="iDesc">Description (optional)</label>
+  <input id="iDesc" maxlength="80" autocomplete="off" placeholder="e.g. Morning coffee">
+  <div id="dtWrap" hidden><label class="f" for="iDt">Date &amp; time</label><input type="datetime-local" id="iDt"></div>
+  <div class="err" id="eExp" role="alert"></div>
+  <div class="acts"><button type="button" class="btn" data-close>Cancel</button><button class="btn primary" type="submit">Save</button></div>
+</form></dialog>
+
+<dialog id="dBud"><form id="fBud" novalidate>
+  <h2>Budget</h2>
+  <label class="f" for="bAmt">Budget amount</label>
+  <input id="bAmt" inputmode="decimal" autocomplete="off" placeholder="e.g. 5000">
+  <label class="f" for="bPer">Period</label>
+  <select id="bPer"><option value="daily">Daily</option><option value="weekly">Weekly (Mon–Sun)</option><option value="monthly">Monthly</option></select>
+  <label class="f" for="bCur">Currency</label>
+  <select id="bCur"><option value="TRY">₺ Turkish lira (TRY)</option><option value="EUR">€ Euro (EUR)</option><option value="USD">$ US dollar (USD)</option><option value="GBP">£ Pound (GBP)</option></select>
+  <small>Currency is only a display label; amounts aren’t converted.</small>
+  <div class="err" id="eBud" role="alert"></div>
+  <div class="acts"><button type="button" class="btn" data-close>Cancel</button><button class="btn primary" type="submit">Save budget</button></div>
+</form></dialog>
+
+<dialog id="dDel"><h2>Delete expense?</h2><p id="pDel" class="muted"></p>
+  <div class="acts"><button class="btn" data-close>Keep it</button><button class="btn danger" id="bDel">Delete</button></div></dialog>
+
+<script src="app.js"></script>
 </body>
 </html>
